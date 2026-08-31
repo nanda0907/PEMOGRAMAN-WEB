@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>SIMPUS-Mini | Daftar Buku</title>
+    <link rel="stylesheet" href="../style.css">
 </head>
 <body>
     <header>
@@ -11,30 +12,60 @@
             <ul>
                 <li><a href="../index.html">Beranda</a></li>
                 <li><a href="list.html">Daftar Buku</a></li>
-                <li><a href="../anggota/list.html">Daftar Anggota</a></li>
-                <li><a href="../anggota/tambah.html">Tambah Anggota</a></li>
                 <li><a href="tambah.html">Tambah Buku</a></li>
+                <li><a href="../anggota/list.html">Daftar Anggota</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
         <section>
             <h2>Daftar Buku</h2>
             <table>
                 <thead>
                     <tr>
-                        <th>Kode Buku</th>
                         <th>Judul</th>
                         <th>Pengarang</th>
+                        <th>Tahun</th>
                         <th>Stok</th>
                         <th>Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>B001</td>
-                        <td>Pemrograman Web Dasar</td>
-                        <td>Andi Nugroho</td>
+                        <td>Laskar Pelangi</td>
+                        <td>Andrea Hirata</td>
+                        <td>2005</td>
+                        <td>4</td>
+                        <td>
+                            <button type="button">Edit</button>
+                            <button type="button">Hapus</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Bumi Manusia</td>
+                        <td>Pramoedya Ananta Toer</td>
+                        <td>1980</td>
+                        <td>2</td>
+                        <td>
+                            <button type="button">Edit</button>
+                            <button type="button">Hapus</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Negeri 5 Menara</td>
+                        <td>Ahmad Fuadi</td>
+                        <td>2009</td>
+                        <td>0</td>
+                        <td>
+                            <button type="button">Edit</button>
+                            <button type="button">Hapus</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Filosofi Teras</td>
+                        <td>Henry Manampiring</td>
+                        <td>2018</td>
                         <td>5</td>
                         <td>
                             <button type="button">Edit</button>
@@ -42,10 +73,10 @@
                         </td>
                     </tr>
                     <tr>
-                        <td>B002</td>
-                        <td>Algoritma dan Struktur Data</td>
-                        <td>Dewi Lestari</td>
-                        <td>3</td>
+                        <td>Ronggeng Dukuh Paruk</td>
+                        <td>Ahmad Tohari</td>
+                        <td>1982</td>
+                        <td>1</td>
                         <td>
                             <button type="button">Edit</button>
                             <button type="button">Hapus</button>
@@ -55,6 +86,7 @@
             </table>
         </section>
     </main>
+
     <footer>
         <p>&copy; 2026 SIMPUS-Mini &mdash; Jobsheet 1</p>
     </footer>
