@@ -7,10 +7,13 @@
     <link rel="stylesheet" href="../assets/css/style.css">
 </head>
 <body>
+
     <header>
         <h1>GlowTrack</h1>
+
         <input type="checkbox" id="nav-toggle" class="nav-toggle">
         <label for="nav-toggle" class="nav-toggle-label">&#9776;</label>
+
         <nav>
             <ul>
                 <li><a href="../index.html">Beranda</a></li>
@@ -23,12 +26,16 @@
     <main>
         <section>
             <h2>Tambah Rutinitas</h2>
-            <p class="subtitle">Tambahkan produk skincare baru ke dalam rutinitasmu.</p>
+            <p class="subtitle">
+                Tambahkan produk skincare baru ke dalam rutinitasmu.
+            </p>
+
             <form>
                 <p>
                     <label for="produk">Nama Produk</label>
                     <input type="text" id="produk" name="produk" required>
                 </p>
+
                 <p>
                     <label for="kategori">Kategori</label>
                     <select id="kategori" name="kategori">
@@ -40,6 +47,7 @@
                         <option value="lainnya">Lainnya</option>
                     </select>
                 </p>
+
                 <p>
                     <label for="waktu">Waktu Pemakaian</label>
                     <select id="waktu" name="waktu">
@@ -48,14 +56,22 @@
                         <option value="pagi-malam">Pagi &amp; Malam</option>
                     </select>
                 </p>
+
                 <p>
                     <label for="urutan">Urutan Pemakaian</label>
                     <input type="number" id="urutan" name="urutan" min="1" required>
                 </p>
+
                 <p>
                     <label for="catatan">Catatan</label>
-                    <textarea id="catatan" name="catatan" rows="3" placeholder="Contoh: tunggu 2 menit sebelum lanjut ke langkah berikutnya"></textarea>
+                    <textarea
+                        id="catatan"
+                        name="catatan"
+                        rows="3"
+                        placeholder="Contoh: tunggu 2 menit sebelum lanjut ke langkah berikutnya">
+                    </textarea>
                 </p>
+
                 <p>
                     <button type="submit">Simpan</button>
                 </p>
@@ -64,7 +80,8 @@
     </main>
 
     <footer>
-        <p>&copy; 2026 GlowTrack &mdash; Skincare Routine Tracker</p>
+        <p>&copy; 2026 GlowTrack - Skincare Routine Tracker</p>
     </footer>
+
 </body>
 </html>
