@@ -1,5 +1,5 @@
 <?php
-session_start();
+require_once "../includes/auth.php";
 require_once "../includes/koneksi.php";
 
 $id = (int)$_POST['id'];

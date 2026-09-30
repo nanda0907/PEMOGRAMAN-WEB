@@ -1,4 +1,5 @@
 <?php
+require_once "../includes/auth.php";
 require_once "../includes/koneksi.php";
 
 $id = (int)$_GET['id'];
@@ -15,61 +16,79 @@ if (!$data) {
     die("Data tidak ditemukan.");
 }
 
+$kategoriList = [
+    "Cleanser", "Toner", "Serum",
+    "Moisturizer", "Sunscreen", "Lainnya"
+];
+
 include "../includes/header.php";
 ?>
 
-<h2>Edit Rutinitas</h2>
+<div class="row justify-content-center">
+    <div class="col-lg-8">
+        <div class="card border-0 shadow-sm rounded-4">
+            <div class="card-body p-4">
 
-<form action="proses_edit.php" method="POST">
+                <h2 class="h4 fw-bold text-glow-dark mb-4">
+                    <i class="bi bi-pencil-square me-2"></i>Edit Rutinitas
+                </h2>
 
-    <input type="hidden" name="id" value="<?= $data['id'] ?>">
+                <form action="proses_edit.php" method="POST" class="needs-validation" novalidate>
 
-    <label>Nama Produk</label>
-    <input type="text" name="produk"
-           value="<?= htmlspecialchars($data['produk']) ?>" required>
+                    <input type="hidden" name="id" value="<?= $data['id'] ?>">
 
-    <label>Kategori</label>
-    <select name="kategori" required>
-        <?php
-        $kategoriList = [
-            "Cleanser", "Toner", "Serum",
-            "Moisturizer", "Sunscreen", "Lainnya"
-        ];
+                    <div class="mb-3">
+                        <label for="produk" class="form-label fw-semibold">Nama Produk</label>
+                        <input type="text" class="form-control" id="produk" name="produk" value="<?= htmlspecialchars($data['produk']) ?>" required>
+                        <div class="invalid-feedback">Nama produk harus diisi.</div>
+                    </div>
 
-        foreach ($kategoriList as $kategori):
-        ?>
-            <option value="<?= $kategori ?>"
-                <?= $data['kategori'] == $kategori ? 'selected' : '' ?>>
-                <?= $kategori ?>
-            </option>
-        <?php endforeach; ?>
-    </select>
+                    <div class="row">
+                        <div class="col-md-4 mb-3">
+                            <label for="kategori" class="form-label fw-semibold">Kategori</label>
+                            <select class="form-select" id="kategori" name="kategori" required>
+                                <?php foreach ($kategoriList as $kategori): ?>
+                                    <option value="<?= $kategori ?>"
+                                        <?= $data['kategori'] == $kategori ? 'selected' : '' ?>>
+                                        <?= $kategori ?>
+                                    </option>
+                                <?php endforeach; ?>
+                            </select>
+                        </div>
 
-    <label>Waktu</label>
-    <select name="waktu" required>
-        <option value="Pagi"
-            <?= $data['waktu'] == 'Pagi' ? 'selected' : '' ?>>
-            Pagi
-        </option>
+                        <div class="col-md-4 mb-3">
+                            <label for="waktu" class="form-label fw-semibold">Waktu</label>
+                            <select class="form-select" id="waktu" name="waktu" required>
+                                <option value="Pagi"
+                                    <?= $data['waktu'] == 'Pagi' ? 'selected' : '' ?>>Pagi</option>
+                                <option value="Malam"
+                                    <?= $data['waktu'] == 'Malam' ? 'selected' : '' ?>>Malam</option>
+                            </select>
+                        </div>
 
-        <option value="Malam"
-            <?= $data['waktu'] == 'Malam' ? 'selected' : '' ?>>
-            Malam
-        </option>
-    </select>
+                        <div class="col-md-4 mb-3">
+                            <label for="urutan" class="form-label fw-semibold">Urutan Pemakaian</label>
+                            <input type="number" class="form-control" id="urutan" name="urutan" value="<?= (int)$data['urutan'] ?>" min="1" required>
+                            <div class="invalid-feedback">Urutan harus lebih dari 0.</div>
+                        </div>
+                    </div>
 
-    <label>Urutan Pemakaian</label>
-    <input type="number" name="urutan"
-           value="<?= $data['urutan'] ?>" min="1" required>
+                    <div class="mb-4">
+                        <label for="catatan" class="form-label fw-semibold">Catatan</label>
+                        <textarea class="form-control" id="catatan" name="catatan" rows="3"><?= htmlspecialchars($data['catatan'] ?? '') ?></textarea>
+                    </div>
 
-    <label>Catatan</label>
-    <textarea name="catatan"><?= htmlspecialchars($data['catatan'] ?? '') ?></textarea>
+                    <div class="d-flex justify-content-end gap-2">
+                        <a href="daftar.php" class="btn btn-light px-4">Batal</a>
+                        <button type="submit" class="btn btn-primary px-4">
+                            <i class="bi bi-check-lg me-1"></i>Update
+                        </button>
+                    </div>
 
-    <br><br>
-
-    <button type="submit">Update</button>
-    <a href="daftar.php">Batal</a>
-
-</form>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
 
 <?php include "../includes/footer.php"; ?>

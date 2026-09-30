@@ -1,8 +1,14 @@
 <?php
-session_start();
+require_once "../includes/auth.php";
 require_once "../includes/koneksi.php";
 
-$id = (int)$_GET['id'];
+// Hanya menerima POST (dari tombol Hapus di daftar.php)
+if ($_SERVER['REQUEST_METHOD'] !== 'POST') {
+    header("Location: daftar.php");
+    exit;
+}
+
+$id = (int)($_POST['id'] ?? 0);
 
 $query = pg_query_params(
     $conn,

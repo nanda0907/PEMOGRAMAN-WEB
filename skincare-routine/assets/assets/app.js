@@ -5,67 +5,52 @@ document.addEventListener("DOMContentLoaded", function () {
     // =========================
 
     const searchInput = document.getElementById("searchInput");
+    const noResult = document.getElementById("noResult");
+    const jumlahData = document.getElementById("jumlahData");
 
     if (searchInput) {
-        searchInput.addEventListener("keyup", function () {
+        searchInput.addEventListener("input", function () {
 
-            const keyword = searchInput.value.toLowerCase();
+            const keyword = searchInput.value.trim().toLowerCase();
             const rows = document.querySelectorAll("#rutinitasTable tbody tr");
+            let found = 0;
 
             rows.forEach(function (row) {
 
-                const text = row.textContent.toLowerCase();
+                const match = row.textContent.toLowerCase().includes(keyword);
 
-                if (text.includes(keyword)) {
-                    row.style.display = "";
-                } else {
-                    row.style.display = "none";
+                row.style.display = match ? "" : "none";
+
+                if (match) {
+                    found++;
                 }
-
             });
+
+            if (jumlahData) {
+                jumlahData.textContent = found;
+            }
+
+            if (noResult) {
+                noResult.hidden = found > 0;
+            }
         });
     }
 
 
     // =========================
-    // VALIDASI FORM RUTINITAS
+    // VALIDASI FORM (BOOTSTRAP)
     // =========================
 
-    const form = document.getElementById("formRutinitas");
-
-    if (form) {
+    document.querySelectorAll(".needs-validation").forEach(function (form) {
         form.addEventListener("submit", function (event) {
 
-            const produk = document.getElementById("produk").value.trim();
-            const kategori = document.getElementById("kategori").value;
-            const waktu = document.getElementById("waktu").value;
-            const urutan = document.getElementById("urutan").value;
-
-            if (produk === "") {
-                alert("Nama produk harus diisi.");
+            if (!form.checkValidity()) {
                 event.preventDefault();
-                return;
+                event.stopPropagation();
             }
 
-            if (kategori === "") {
-                alert("Kategori harus dipilih.");
-                event.preventDefault();
-                return;
-            }
-
-            if (waktu === "") {
-                alert("Waktu pemakaian harus dipilih.");
-                event.preventDefault();
-                return;
-            }
-
-            if (urutan < 1) {
-                alert("Urutan pemakaian harus lebih dari 0.");
-                event.preventDefault();
-                return;
-            }
-
+            form.classList.add("was-validated");
         });
-    }
+    });
 
 });
