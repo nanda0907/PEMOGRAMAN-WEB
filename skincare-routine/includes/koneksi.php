@@ -1,15 +1,18 @@
 <?php
-$host = "localhost";
-$port = "5432";
-$dbname = "db_skincare";
-$user = "postgres";
-$password = "12345678";
+$host     = "ep-falling-violet-b4jw076m-pooler.c-6.us-east-2.aws.neon.tech";
+$port     = "5432";
+$dbname   = "neondb";
+$user     = "neondb_owner";
+$password = "npg_gr3XPBodOKv8";
+$sslmode  = "require";
 
 $conn = pg_connect(
-    "host=$host port=$port dbname=$dbname user=$user password=$password"
+    "host=$host port=$port dbname=$dbname user=$user password=$password sslmode=$sslmode"
 );
 
 if (!$conn) {
-    die("Koneksi database gagal. Cek PostgreSQL, nama database, username, dan password.");
+    die("Koneksi database gagal. Periksa host, username, password, dan sslmode.");
 }
+
+echo "Koneksi database berhasil!";
 ?>
