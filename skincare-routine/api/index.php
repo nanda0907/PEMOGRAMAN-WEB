@@ -1,4 +1,15 @@
 <?php
+$project_root = dirname(_DIR_);
+$requested_path = $_GET['path'] ?? '';
+
+$relative_path = ltrim(parse_url($requested_path, PHP_URL_PATH) ?? '', '/');
+
+if ($relative_path === '' || $relative_path === 'index.php') {
+    chdir($project_root);
+    require $project_root . '/index.php';
+    exit;
+}
+
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
