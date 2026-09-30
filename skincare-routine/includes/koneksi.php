@@ -1,11 +1,9 @@
 <?php
-$host     = "ep-falling-violet-b4jw076m-pooler.c-6.us-east-2.aws.neon.tech";
+$host     = "aws-0-ap-southeast-1.pooler.supabase.com";
 $port     = "5432";
-$dbname   = "neondb";
-$user     = "neondb_owner";
+$dbname   = "postgres";
+$user     = "postgres.ngfrhcaovfqygargeyby";
 $password = "npg_gr3XPBodOKv8";
-$sslmode  = "require";
-
 
 
 
